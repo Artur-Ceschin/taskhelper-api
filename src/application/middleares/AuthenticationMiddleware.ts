@@ -1,6 +1,6 @@
 import { verify } from 'jsonwebtoken'
 
-import { env } from '@/env'
+import authConfig from '@/config/auth'
 
 import {
   IData,
@@ -29,7 +29,7 @@ export class AuthenticationMiddleware implements IMiddleware {
         throw new Error()
       }
 
-      const payload = verify(token, env.JWT_SECRET)
+      const payload = verify(token, authConfig.jwt.secret)
 
       return {
         data: {

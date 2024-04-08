@@ -1,7 +1,11 @@
+import cors from '@fastify/cors'
 import fastify from 'fastify'
 
-import { appRoutes } from './route'
+import { privateRoutes, publicRoutes } from './route'
 
 export const app = fastify()
 
-app.register(appRoutes)
+app.register(publicRoutes)
+app.register(privateRoutes)
+
+app.register(cors, {})
